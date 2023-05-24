@@ -4,8 +4,10 @@ async function uploadSR() {
   let SR = [
     { stationid: 1, routeid: 1 },
     { stationid: 1, routeid: 2 },
+    { stationid: 2, routeid: 1 },
     { stationid: 2, routeid: 2 },
     { stationid: 2, routeid: 3 },
+    { stationid: 2, routeid: 4 },
     { stationid: 3, routeid: 3 },
     { stationid: 3, routeid: 4 },
     { stationid: 3, routeid: 5 },
@@ -22,6 +24,8 @@ async function uploadSR() {
     { stationid: 6, routeid: 8 },
     { stationid: 6, routeid: 11 },
     { stationid: 6, routeid: 12 },
+    { stationid: 7, routeid: 11 },
+    { stationid: 7, routeid: 12 }
   ];
   for (let i = 0; i < SR.length; i++) {
     const element =SR[i];
@@ -80,22 +84,23 @@ async function uploadS() {
     await db("se_project.stations").insert(element).returning("*");
   }
 }
+
+//this function inserts in the table in the database
 async function uploadR() {
     let routes = [
       { routename: "hi12", fromstationid: 1, tostationid: 2 },
       { routename: "hi21", fromstationid: 2, tostationid: 1 },
-      { routename: "hi23", fromstationid: 2, tostationid: 3 },
+      { routename: "hi23", fromstationid: 2, tostationid: 3 },//
       { routename: "hi32", fromstationid: 3, tostationid: 2 },
       { routename: "hi34", fromstationid: 3, tostationid: 4 },
-      { routename: "hi43", fromstationid: 4, tostationid: 3 },
-      { routename: "hi36", fromstationid: 3, tostationid: 6 },
-      { routename: "hi63", fromstationid: 6, tostationid: 3 },
+      { routename: "hi43", fromstationid: 4, tostationid: 3 },//
+      { routename: "hi63", fromstationid: 6, tostationid: 3 },//
       { routename: "hi45", fromstationid: 4, tostationid: 5 },
       { routename: "hi54", fromstationid: 5, tostationid: 4 },
       { routename: "hi76", fromstationid: 7, tostationid: 6 },
       { routename: "hi67", fromstationid: 6, tostationid: 7 },
     ];
-  
+
   for (let i = 0; i < routes.length; i++) {
     const element =routes[i];
     await db("se_project.routes").insert(element).returning("*");
